@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:33:23 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/11 08:49:54 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:16:53 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,17 @@ char	*ft_strdup(const char *s1)
 	dst[i] = '\0';
 	return (dst);
 }
+/*
+#include <stdio.h>
+int main(void)
+{
+	char str[] = "Stupid sexy Flanders";
+	char *dup = ft_strdup(str);
+	int x = ft_strlen(str);
+	int y = ft_strlen(dup);
+
+	printf("Original: %s - len: %i\n", str, x);
+	printf("Dup: %s - len: %i\n", dup, y);
+	return 0;
+}
+*/

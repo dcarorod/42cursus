@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:09:28 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 14:16:46 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:30:45 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isinset(char c, char const *set)
-{
-	int	i;
-
-	i =0;
-	while (set[i] != '\0')
-	{
-		if (c == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -37,9 +23,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	start = 0;
 	end = ft_strlen(s1);
-	while (start <= end && ft_isinset(s1[start], set))
+	while (start <= end && ft_strchr(set, s1[start]))
 		start++;
-	while (end >= start && ft_isinset(s1[end], set))
+	while (end >= start && ft_strchr(set, s1[end]))
 		end--;
 	trimmed_len = end - start;
 	if (trimmed_len <= 0)
@@ -50,7 +36,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = ft_substr(s1, start, trimmed_len);
 	return (str);
 }
-
+/*
 #include <stdio.h>
 int main(void)
 {
@@ -70,3 +56,4 @@ int main(void)
 	free(trimmedStr);
 	return 0;
 }
+*/
