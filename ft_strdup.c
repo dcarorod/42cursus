@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:33:23 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 17:16:53 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/18 20:48:56 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	char	*dst;
+	size_t		i;
+	char		*dst;
 
 	i = 0;
 	dst = malloc(ft_strlen(s1) + 1);
