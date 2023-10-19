@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 09:53:11 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 10:03:53 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:10:29 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_itoa(int n)
 	is_neg = n < 0;
 	len = ft_intlen(n) + is_neg;
 	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
 	if (n == 0)
 		str[0] = '0';
 	if (is_neg)

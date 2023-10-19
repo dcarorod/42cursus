@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 08:57:29 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/19 09:19:56 by dcaro-ro         ###   ########.fr       */
+/*   Created: 2023/10/19 11:40:51 by dcaro-ro          #+#    #+#             */
+/*   Updated: 2023/10/19 12:04:57 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ to by s are interpreted as unsigned char.
 
 The memchr function returns a pointer to the located character,
 or a null pointer if the character does not occur in the object.
-
 */
 
 void	*ft_memchr(const void *s, int c, size_t n)

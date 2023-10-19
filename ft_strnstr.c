@@ -6,29 +6,38 @@
 /*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:43:08 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 10:04:42 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:28:43 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+The strnstr() function locates the first occurrence of
+the null-terminated string needle in the string haystack,
+where not more than len characters are searched.
+Characters that appear after a `\0' character are not searched.
+Since the strnstr() function is a FreeBSD specific API, it
+should only be used when portability is not a concern.
+*/
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t		i;
-	size_t		needle_len;
-	const char	*substr;
+	size_t	i;
+	size_t	j;
 
 	if (needle[0] == '\0')
 		return ((char *)haystack);
 	i = 0;
-	needle_len = ft_strlen(needle);
-	if (needle_len > len)
-		return (NULL);
-	while (i <= (len - needle_len))
+	while (haystack[i] != '\0' && (i < len))
 	{
-		substr = haystack + i;
-		if (ft_strncmp(substr, needle, needle_len) == 0)
-			return ((char *)substr);
+		j = 0;
+		while (haystack[i + j] == needle[j] && haystack[i + j] && (i + j) < len)
+		{
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)haystack + i);
+		}
 		i++;
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:32:05 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/12 11:42:04 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:30:34 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strrchr(const char *s, int c)
 			last = (char *)s;
 		s++;
 	}
+	if ((char)c == '\0' && *s == '\0')
+		last = (char *)s;
 	return (last);
 }
 /* The strrchr() function returns a pointer to the

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:09:28 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 19:30:45 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:22:24 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,27 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	size_t	start;
-	size_t	end;
-	int		trimmed_len;
+	int		start;
+	int		end;
+	int		i;
 
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
 	end = ft_strlen(s1);
-	while (start <= end && ft_strchr(set, s1[start]))
+	while (start < end && ft_strchr(set, s1[start]))
 		start++;
-	while (end >= start && ft_strchr(set, s1[end]))
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
-	trimmed_len = end - start;
-	if (trimmed_len <= 0)
+	if (start >= end)
 		return (ft_strdup(""));
-	str = malloc(sizeof(char) * (trimmed_len + 1));
+	str = (char *)malloc(end - start + 1);
 	if (!str)
 		return (NULL);
-	str = ft_substr(s1, start, trimmed_len);
+	i = -1;
+	while (++i < end - start)
+		str[i] = s1[start + i];
+	str[end - start] = '\0';
 	return (str);
 }
 /*

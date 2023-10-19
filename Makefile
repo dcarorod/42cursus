@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 08:35:50 by dcaro-ro          #+#    #+#              #
-#    Updated: 2023/10/19 08:44:21 by dcaro-ro         ###   ########.fr        #
+#    Updated: 2023/10/19 12:02:51 by dcaro-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,19 +47,19 @@ SRCS		=		ft_isalpha.c\
 					ft_putendl_fd.c\
 					ft_putnbr_fd.c\
 
-BONUS		=		ft_lstnew.c\
-					ft_lstadd_front.c\
-					ft_lstsize.c\
-					ft_lstlast.c\
-					ft_lstadd_back.c\
-					ft_lstdelone.c\
-					ft_lstclear.c\
-					ft_lstiter.c\
-					ft_lstmap.c\
+#BONUS		=		ft_lstnew.c\
+#					ft_lstadd_front.c\
+#					ft_lstsize.c\
+#					ft_lstlast.c\
+#					ft_lstadd_back.c\
+#					ft_lstdelone.c\
+#					ft_lstclear.c\
+#					ft_lstiter.c\
+#					ft_lstmap.c\
 
 OBJS		=		${SRCS:.c=.o}
 
-BONUS_OBJS	=		$(BONUS:.c=.o)
+#BONUS_OBJS	=		$(BONUS:.c=.o)
 
 CC			=		gcc
 
@@ -84,7 +84,7 @@ fclean:				clean
 
 re:							fclean all
 
-bonus:						$(OBJS) $(BONUS_OBJS)
-									ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+#bonus:						$(OBJS) $(BONUS_OBJS)
+#									ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY:				all clean fclean re .c.o

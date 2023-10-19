@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 22:16:59 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/18 22:47:38 by dcaro-ro         ###   ########.fr       */
+/*   Created: 2023/10/19 11:53:25 by dcaro-ro          #+#    #+#             */
+/*   Updated: 2023/10/19 12:03:23 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	unsigned int 	len;
-	char	*str;
+	unsigned int	len;
+	char			*str;
 
 	if (!s || !f)
 		return (NULL);
@@ -38,32 +38,29 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 char myFunction(unsigned int index, char character)
 {
 	(void) index;
-    // convert lowercase characters to uppercase
-    if (character >= 'a' && character <= 'z')
-        return character - 32;
-    else
-        return character;
+	// convert lowercase characters to uppercase
+	if (character >= 'a' && character <= 'z')
+		return character - 32;
+	else
+		return character;
 }
 
 #include <stdio.h>
 int main(void)
 {
-    const char *inputString = "Hello, World!";
-    char *result = ft_strmapi(inputString, myFunction);
+	const char *inputString = "Hello, World!";
+	char *result = ft_strmapi(inputString, myFunction);
 
-    if (result)
-    {
-        printf("Original string: %s\n", inputString);
-        printf("Transformed string: %s\n", result);
+	if (result)
+	{
+		printf("Original string: %s\n", inputString);
+		printf("Transformed string: %s\n", result);
 
-        // Don't forget to free the allocated memory
-        free(result);
-    }
-    else
-    {
-        printf("Memory allocation failed or invalid input.\n");
-    }
+		free(result);
+	}
+	else
+		printf("Memory allocation failed or invalid input.\n");
 
-    return 0;
+	return 0;
 }
 */

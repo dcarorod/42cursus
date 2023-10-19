@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:46:33 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/17 19:27:35 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:58:58 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(void)
 	size_t len = 12;
 
 	printf("Original string: %s\n", str);
-
 
 	char *substr = ft_substr(str, start, len);
 	printf("Substring: %s\n", substr);
