@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:07:02 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/19 21:30:15 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:33:32 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (current != NULL)
 	{
 		new_content = f(current->content);
-		if (new_content)
+		new_node = ft_lstnew(new_content);
+		if (!new_node)
 		{
-			new_node = ft_lstnew(new_content);
-			if (!new_node)
-				del(new_content);
+			free(new_content);
+			ft_lstclear(&new_list, del);
+			return (NULL) ;
 		}
-		else
-			ft_lstadd_back(&new_list, new_node);
+		ft_lstadd_back(&new_list, new_node);
 		current = current->next;
 	}
 	return (new_list);
