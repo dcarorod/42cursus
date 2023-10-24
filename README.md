@@ -1,2 +1,2 @@
-# libft
- A collection of functions for my 42 cursus
+# 42 Cursus
+ My parcours at 42 School
