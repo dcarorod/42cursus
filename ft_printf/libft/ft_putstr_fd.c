@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:13:31 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:13:50 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:55:23 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,3 @@ void	ft_putstr_fd(char *s, int fd)
 	while (*s)
 		write(fd, s++, 1);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	int fd = 1;
-	char	str[] = "A la grande le puse Cuca\n";
-	ft_putstr_fd(str, fd);
-}
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:42:48 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 14:43:07 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:53:40 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,3 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(ptr, (count * size));
 	return (ptr);
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	size_t count = 5;
-	size_t size = sizeof(int);
-	int *arr = (int *)ft_calloc(count, size);
-
-	if (arr != NULL)
-	{
-		// Check if memory is initialized to 0
-		for (size_t i = 0; i < count; i++)
-		{
-			printf("arr[%zu] = %d\n", i, arr[i]);
-		}
-		// free allocated memory
-		free(arr);
-	}
-	else
-		printf("Memory allocation failed.\n");
-	return 0;
-}
-*/

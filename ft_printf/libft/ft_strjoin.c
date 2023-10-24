@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:18:16 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:19:35 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:55:51 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strcat(dst, (char *)s2);
 	return (dst);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char str1[] = "A la grande ";
-	char str2[] = "le puse Cuca";
-	char *strs = ft_strjoin(str1, str2);
-
-	printf("%s", strs);
-}
-*/

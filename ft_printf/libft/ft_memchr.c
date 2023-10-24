@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:06:49 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:07:28 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:54:36 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-int main() {
-	char str[] = "This is a test string.";
-	char x = 'a';
-	size_t search_len = ft_strlen(str);
-	void *res = ft_memchr(str, x, search_len);
-	if (res != NULL) {
-		printf("Found '%c' at pos %ld: %s\n", x, (char *)res - str, (char *)res);
-	} else {
-		printf("'%c' not found in the string.\n", x);
-	}
-	return 0;
-}
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:22:09 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:22:27 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:56:02 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (ft_strlen(src));
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char src[] = "abcd123";
-	size_t dsize = 5;
-	char dst[20];
-	char str[20];
-
-	size_t x = ft_strlcpy(dst, src, dsize);
-	size_t y = strlcpy(str, src, dsize);
-
-	printf("Source: %s\n", src);
-	printf("dst: %s\n", dst);
-	printf("len mystrlcpy: %zu\n\n", x);
-	printf("str: %s\n", str);
-	printf("Len original: %zu\n", y);
-
-	return 0;
-}
-*/

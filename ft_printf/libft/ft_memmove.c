@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:09:32 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:09:40 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:54:57 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char str[] = "Hello, World!";
-	printf("Original string: %s\n", str);
-
-	//memmove(str + 7, str, 7); // Shifts "World!" to the right by 7 positions
-	//printf("after memmove: %s\n", str);
-
-	ft_memmove(str + 7, str, 7); // Shifts "World!" to the right by 7 positions
-	printf("after ft_memmove: %s\n", str);
-	return 0;
-}
-*/

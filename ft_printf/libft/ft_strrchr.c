@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:03:35 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:03:45 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:56:26 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,3 @@ char	*ft_strrchr(const char *s, int c)
 }
 /* The strrchr() function returns a pointer to the
 last occurrence of the character c in the string */
-/*
-#include <stdio.h>
-int main(void)
-{
-	char str[] = "Hello, World!";
-	char *result;
-
-	char letter = 'd';
-	result = ft_strrchr(str, letter);
-	if (result != NULL)
-	{
-		printf("Last 'o' found at position: %ld\n", result - str);
-	}
-	else
-		printf("'%c' not found in string.\n", letter);
-	return 0;
-}
-*/

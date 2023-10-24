@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:43:42 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:27:57 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:53:54 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-/*
-#include <stdio.h>
-int main(void)
-{
-	int x = -2147483648;
-	int neg = -259860;
-	int pos = 2486910;
-
-	printf("INT_MIN: %i\n", x);
-	printf("String: %s\n\n", ft_itoa(x));
-
-	printf("Negative: %i\n", neg);
-	printf("String: %s\n\n", ft_itoa(neg));
-
-	printf("Positive: %i\n", pos);
-	printf("String: %s\n", ft_itoa(pos));
-
-	return 0;
-}
-*/

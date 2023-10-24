@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:02:19 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:02:24 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:56:42 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char const *str = "A la grande le puse Cuca.";
-	unsigned int start = 12;
-	size_t len = 12;
-
-	printf("Original string: %s\n", str);
-
-	char *substr = ft_substr(str, start, len);
-	printf("Substring: %s\n", substr);
-	return 0;
-}
-*/

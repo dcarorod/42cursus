@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:14:40 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/24 15:13:19 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:53:22 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,29 +111,3 @@ char	**ft_split(char const *s, char c)
 	strs[++j] = NULL;
 	return (strs);
 }
-/*
-#include <stdio.h>
-int main(void) {
-	char *input_string = "This,is,a,sample,string";
-	char delimiter = ',';
-	int wc = ft_count_words(input_string, delimiter);
-
-	char **result = ft_split(input_string, delimiter);
-
-	if (result == NULL)
-	{
-		printf("Memory allocation failed. Unable to split the string.\n");
-		return 1;
-	}
-
-	// Iterate through the result array and print the split words
-	for (int i = 0; i <= wc; i++)
-	{
-		printf("Word %d: %s\n", i + 1, result[i]);
-		free(result[i]);
-	}
-
-	free(result);
-	return 0;
-}
-*/

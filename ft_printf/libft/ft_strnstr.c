@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:04:22 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:04:48 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:56:17 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char haystack[] = "Una aguja en un pajar";
-	char needle[] = "aguja";
-	size_t max_len = ft_strlen(haystack);
-
-	printf("haystack: %s\n", haystack);
-	printf("needle: %s\n", needle);
-
-	char *result1 = ft_strnstr(haystack, needle, max_len);
-
-	if (result1 != NULL)
-		printf("ft_strnstr: needle found: %s\n", result1);
-	else
-		printf("ft_strnstr: needle not found in the haystack.\n");
-
-	char *result2 = strnstr(haystack, needle, max_len);
-
-	if (result2 != NULL)
-		printf("strnstr: needle found: %s\n", result2);
-	else
-		printf("strnstr: needle not found in the haystack.\n");
-
-	return 0;
-}
-*/

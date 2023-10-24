@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:08:01 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/23 15:08:27 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:54:49 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 /* declare pointers for byte-wise comparison, iterate through the memory
 	blocks up to n bytes, return the difference if a value is found or
 	0 if no differences are found after n bytes*/
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char buf1[] = "Hello, World!";
-	char buf2[] = "Hello, World!";
-	char buf3[] = "Hello, There!";
-	size_t size = 13;
-
-	// Test with identical memory blocks
-	int result1 = ft_memcmp(buf1, buf2, size);
-	int std1 = memcmp(buf1, buf2, size);
-	printf("Identical memory blocks (ft_memcmp) : %d\n", result1);
-	printf("Identical memory blocks (memcmp): %d\n\n", std1);
-
-	// Test with different memory blocks
-	int result2 = ft_memcmp(buf1, buf3, size);
-	int std2 = memcmp(buf1, buf3, size);
-	printf("Different memory blocks (ft_memcmp): %d\n", result2);
-	printf("Different memory blocks (memcmp): %d\n", std2);
-
-	return 0;
-}
-*/
