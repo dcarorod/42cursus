@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/19 08:35:50 by dcaro-ro          #+#    #+#              #
-#    Updated: 2023/10/19 21:31:06 by dcaro-ro         ###   ########.fr        #
+#    Created: 2023/10/23 14:16:05 by dcaro-ro          #+#    #+#              #
+#    Updated: 2023/10/23 14:17:54 by dcaro-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,34 +57,28 @@ BONUS		=		ft_lstnew.c\
 					ft_lstiter.c\
 					ft_lstmap.c\
 
-OBJS		=		${SRCS:.c=.o}
+OBJS			=	${SRCS:.c=.o}
 
-BONUS_OBJS	=		$(BONUS:.c=.o)
+BONUS_OBJS		=	$(BONUS:.c=.o)
 
-CC			=		gcc
+CC				=	gcc
+RM				= 	rm -f
+CFLAGS			=	-Wall -Wextra -Werror -I .
 
-CFLAGS		=		-Wall -Werror -Wextra
+all:			$(NAME)
 
-RM			=		rm -f
-
-${NAME}:			$(OBJS)
-							ar rcs $(NAME) $(OBJS)
-
-
-%.o: 				%.c
-						$(CC) -I. $(CFLAGS) -o $@ -c $?
-
-all: 				${NAME}
+$(NAME):		$(OBJS)
+						ar rcs $(NAME) $(OBJS)
 
 clean:
-					${RM} ${OBJS}
+						$(RM) $(OBJS) $(BONUS_OBJS)
 
-fclean:				clean
-							${RM} ${NAME}
+fclean:			clean
+						$(RM) $(NAME)
 
-re:							fclean all
+re:						fclean $(NAME)
 
-bonus:						$(OBJS) $(BONUS_OBJS)
-									ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus:			$(OBJS) $(BONUS_OBJS)
+						ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-.PHONY:				all clean fclean re .c.o
+.PHONY:			all clean fclean re bonus

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 11:53:25 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/19 12:03:23 by dcaro-ro         ###   ########.fr       */
+/*   Created: 2023/10/23 15:05:43 by dcaro-ro          #+#    #+#             */
+/*   Updated: 2023/10/23 15:06:21 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-/*
-// Example function to transform characters
-char myFunction(unsigned int index, char character)
-{
-	(void) index;
-	// convert lowercase characters to uppercase
-	if (character >= 'a' && character <= 'z')
-		return character - 32;
-	else
-		return character;
-}
-
-#include <stdio.h>
-int main(void)
-{
-	const char *inputString = "Hello, World!";
-	char *result = ft_strmapi(inputString, myFunction);
-
-	if (result)
-	{
-		printf("Original string: %s\n", inputString);
-		printf("Transformed string: %s\n", result);
-
-		free(result);
-	}
-	else
-		printf("Memory allocation failed or invalid input.\n");
-
-	return 0;
-}
-*/

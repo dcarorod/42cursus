@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dcaro-ro <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 09:53:11 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/10/19 12:10:29 by dcaro-ro         ###   ########.fr       */
+/*   Created: 2023/10/23 14:43:42 by dcaro-ro          #+#    #+#             */
+/*   Updated: 2023/10/23 15:27:57 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ static int	ft_intlen(int n)
 	return (len);
 }
 
+static int	ft_isneg(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
+}
+
 char	*ft_itoa(int n)
 {
 	int		len;
@@ -33,7 +40,7 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	is_neg = n < 0;
+	is_neg = ft_isneg(n);
 	len = ft_intlen(n) + is_neg;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
