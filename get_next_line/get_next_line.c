@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcaro-ro <dcaro-ro@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 11:21:46 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/12 12:04:35 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:14:33 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static char	*get_line(t_file **file)
 	char	*line;
 	char	*temp;
 
-	while((*file)->read_data[i] && (*file)->read_data[i] != '\n')
+	i = 0;
+	while ((*file)->read_data[i] && (*file)->read_data[i] != '\n')
 		i++;
 	temp = (*file)->read_data;
 	line = ft_substr(temp, 0, i);
@@ -61,7 +62,7 @@ static char	*get_line(t_file **file)
 
 static int	read_file(t_file **file)
 {
-	int	bytes_read;
+	int		bytes_read;
 	char	buffer[BUFFER_SIZE + 1];
 	char	*temp;
 
@@ -78,8 +79,8 @@ static int	read_file(t_file **file)
 char	*get_next_line(int fd)
 {
 	static t_file	*head = NULL;
-	t_file		*current;
-	int		bytes_read;
+	t_file			*current;
+	int				bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
