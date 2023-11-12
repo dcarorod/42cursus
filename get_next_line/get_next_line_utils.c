@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 11:06:28 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/12 12:12:55 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:16:39 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		dest[i++] = s2[j++];
 	dest[i] = '\0';
 	return (dest);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0' && *s == '\0')
+		return ((char *)s);
+	return (NULL);
 }
