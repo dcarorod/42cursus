@@ -6,7 +6,7 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:10:29 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/20 19:34:52 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:30:25 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_file
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_free_str(char **str);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s1);
-char	*ft_strcpy(char *dest, const char *src);
 
 #endif

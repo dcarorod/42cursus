@@ -6,198 +6,115 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:13:03 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/20 21:43:52 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:41:27 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
-static void	ft_free_node(t_file **head, t_file *node)
+void	free_list(t_file **head)
 {
-	t_file	*temp;
+	t_file	*tmp;
 
-	if (*head == node)
+	while (*head)
 	{
-		temp = node;
-		*head = (*head)->next;
-		free(temp);
-	}
-	else
-	{
-		temp = *head;
-		while (temp)
-		{
-			if (temp->next == node)
-			{
-				temp->next = node->next;
-				break ;
-			}
-			temp = temp->next;
-		}
-		free(node);
+		tmp = (*head)->next;
+		ft_free_str(&(*head)->data);
+		free(*head);
+		*head = tmp;
 	}
 }
-*/
 
-static void	ft_free_node(t_file **head, t_file *node)
-{
-	t_file	*temp;
-	t_file	*prev;
-
-	if (*head == NULL || node == NULL)
-		return ;
-	if (*head == node)
-	{
-		temp = *head;
-		*head = (*head)->next;
-		free(temp->data);
-		free(temp);
-		return ;
-	}
-	temp = *head;
-	while (temp && temp != node)
-	{
-		prev = temp;
-		temp = temp->next;
-	}
-	if (temp == NULL)
-		return ;
-	prev->next = temp->next;
-	free(temp->data);
-	free(temp);
-}
-
-static t_file	*ft_get_node(int fd, t_file **head)
+t_file	*get_file(t_file **head, int fd)
 {
 	t_file	*current;
-	t_file	*last;
+	t_file	*new_node;
 
 	current = *head;
 	while (current)
 	{
 		if (current->fd == fd)
 			return (current);
-		last = current;
 		current = current->next;
 	}
-	current = malloc(sizeof(t_file));
-	if (!current)
+	new_node = malloc(sizeof(t_file));
+	if (!new_node)
 		return (NULL);
-	current->fd = fd;
-	current->data = NULL;
-	current->next = NULL;
-	if (!(*head))
-		*head = current;
-	else
-		last->next = current;
-	return (current);
+	new_node->fd = fd;
+	new_node->data = NULL;
+	new_node->next = *head;
+	*head = new_node;
+	return (new_node);
 }
 
-static int	read_from_fd(int fd, t_file *file, char *buffer)
+static char	*read_buffer(int fd, char *content)
 {
 	int		bytes_read;
-	char	*newline_pos;
-
-	newline_pos = NULL;
-	bytes_read = 1;
-	while (!newline_pos && bytes_read)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (-1);
-		buffer[bytes_read] = '\0';
-		file->data = ft_strjoin(file->data, buffer);
-		if (!file->data)
-		{
-			free(buffer);
-			return (-1);
-		}
-		newline_pos = ft_strchr(file->data, '\n');
-	}
-	free(buffer);
-	return (bytes_read);
-}
-
-static int	append_line(int fd, t_file *file)
-{
 	char	*buffer;
-	int		bytes_read;
 
+	bytes_read = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (-1);
-	bytes_read = read_from_fd(fd, file, buffer);
+		return (ft_free_str(&content));
+	buffer[0] = '\0';
+	while (bytes_read > 0 && !ft_strchr(buffer, '\n'))
+	{
+		bytes_read = read (fd, buffer, BUFFER_SIZE);
+		if (bytes_read > 0)
+		{
+			buffer[bytes_read] = '\0';
+			content = ft_strjoin(content, buffer);
+		}
+	}
 	free(buffer);
 	if (bytes_read < 0)
-		return (-1);
-	if (bytes_read || ft_strlen(file->data))
-		return (1);
-	return (0);
+		return (ft_free_str(&content));
+	return (content);
+}
+
+static char	*handle_content(char *content)
+{
+	char	*buffer;
+	char	*newline_pos;
+	int		len;
+
+	newline_pos = ft_strchr(content, '\n');
+	if (!newline_pos)
+	{
+		buffer = NULL;
+		return (ft_free_str(&content));
+	}
+	else
+		len = (newline_pos - content) + 1;
+	if (!content[len])
+		return (ft_free_str(&content));
+	buffer = ft_substr(content, len, ft_strlen(content) - len);
+	ft_free_str(&content);
+	if (!buffer)
+		return (NULL);
+	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
 	static t_file	*head;
 	t_file			*file;
-	char			*newline_pos;
 	char			*line;
+	char			*newline_pos;
+	int				len;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	file = ft_get_node(fd, &head);
-	if (!file)
-		return (NULL);
-	if (append_line(fd, file) <= 0)
+	file = get_file(&head, fd);
+	if ((file->data && !ft_strchr(file->data, '\n')) || !file->data)
+		file->data = read_buffer(fd, file->data);
+	if (!file->data)
 		return (NULL);
 	newline_pos = ft_strchr(file->data, '\n');
-	if (newline_pos || (!newline_pos && ft_strlen(file->data) > 0))
-	{
-		if (newline_pos)
-			*newline_pos = '\0';
-		line = ft_strjoin(file->data, "\n");
-		ft_strcpy(file->data, ++newline_pos);
-	}
-	else
-		line = ft_strdup("");
-	if (!file->data || !(*file->data))
-	{
-		ft_free_node(&head, file);
-		file = NULL;
-	}
+	len = (newline_pos - file->data) + 1;
+	line = ft_substr(file->data, 0, len);
+	if (!line)
+		return (ft_free_str(&file->data));
+	file->data = handle_content(file->data);
 	return (line);
 }
-
-
-/*
-char	*get_next_line(int fd)
-{
-	static t_file	*head;
-	t_file			*file;
-	char			*newline_pos;
-	char			*line;
-
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
-		return (NULL);
-	file = ft_get_node(fd, &head);
-	if (!file)
-		return (NULL);
-	if (append_line(fd, file) <= 0)
-		return (NULL);
-	newline_pos = ft_strchr(file->data, '\n');
-	if (newline_pos)
-	{
-		*newline_pos = '\0';
-		line = ft_strdup(file->data);
-		ft_strcpy(file->data, ++newline_pos);
-	}
-	else
-		line = ft_strdup(file->data);
-	if (!(*file->data))
-	{
-		ft_free_node(&head, file);
-		file = NULL;
-	}
-	return (line);
-}
-*/
