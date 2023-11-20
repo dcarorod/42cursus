@@ -6,26 +6,29 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:13:03 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/20 22:41:27 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:38:10 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_list(t_file **head)
+static void	ft_free_list(t_file **head)
 {
-	t_file	*tmp;
+	t_file	*current;
+	t_file	*next;
 
-	while (*head)
+	current = *head;
+	while (current)
 	{
-		tmp = (*head)->next;
-		ft_free_str(&(*head)->data);
-		free(*head);
-		*head = tmp;
+		next = current->next;
+		ft_free_str(&current->data);
+		free(current);
+		current = next;
 	}
+	*head = NULL;
 }
 
-t_file	*get_file(t_file **head, int fd)
+static	t_file	*get_file(t_file **head, int fd)
 {
 	t_file	*current;
 	t_file	*new_node;
@@ -39,7 +42,10 @@ t_file	*get_file(t_file **head, int fd)
 	}
 	new_node = malloc(sizeof(t_file));
 	if (!new_node)
+	{
+		ft_free_list(head);
 		return (NULL);
+	}
 	new_node->fd = fd;
 	new_node->data = NULL;
 	new_node->next = *head;
@@ -103,7 +109,7 @@ char	*get_next_line(int fd)
 	char			*newline_pos;
 	int				len;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (NULL);
 	file = get_file(&head, fd);
 	if ((file->data && !ft_strchr(file->data, '\n')) || !file->data)
@@ -114,7 +120,12 @@ char	*get_next_line(int fd)
 	len = (newline_pos - file->data) + 1;
 	line = ft_substr(file->data, 0, len);
 	if (!line)
+	{
+		ft_free_list(&head);
 		return (ft_free_str(&file->data));
+	}
 	file->data = handle_content(file->data);
+	if (!file->data || !file->data[0])
+		ft_free_list(&head);
 	return (line);
 }
