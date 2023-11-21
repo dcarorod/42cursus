@@ -6,26 +6,23 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:13:03 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/20 23:38:10 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:14:38 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_free_list(t_file **head)
+static void	ft_free_list(t_file **to_free)
 {
-	t_file	*current;
-	t_file	*next;
+	t_file	*temp;
 
-	current = *head;
-	while (current)
+	while (*to_free)
 	{
-		next = current->next;
-		ft_free_str(&current->data);
-		free(current);
-		current = next;
+		temp = (*to_free)->next;
+		free((*to_free)->data);
+		free(*to_free);
+		*to_free = temp;
 	}
-	*head = NULL;
 }
 
 static	t_file	*get_file(t_file **head, int fd)
@@ -125,7 +122,7 @@ char	*get_next_line(int fd)
 		return (ft_free_str(&file->data));
 	}
 	file->data = handle_content(file->data);
-	if (!file->data || !file->data[0])
+	if (!file->data || !file->data[0] || !head)
 		ft_free_list(&head);
 	return (line);
 }
