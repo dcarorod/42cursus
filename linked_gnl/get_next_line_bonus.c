@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:13:03 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/21 12:40:50 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:44:19 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_free_file(t_file **head, int fd)
 {
