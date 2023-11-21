@@ -6,12 +6,13 @@
 /*   By: dcaro-ro <dcaro-ro@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:13:03 by dcaro-ro          #+#    #+#             */
-/*   Updated: 2023/11/21 10:14:38 by dcaro-ro         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:11:38 by dcaro-ro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/*
 static void	ft_free_list(t_file **to_free)
 {
 	t_file	*temp;
@@ -22,6 +23,31 @@ static void	ft_free_list(t_file **to_free)
 		free((*to_free)->data);
 		free(*to_free);
 		*to_free = temp;
+	}
+}
+*/
+
+static void	ft_free_file(t_file **head, int fd)
+{
+	t_file	*prev;
+	t_file	*temp;
+
+	temp = *head;
+	prev = NULL;
+	while (temp)
+	{
+		if (temp->fd == fd)
+		{
+			if (prev)
+				prev->next = temp->next;
+			else
+				*head = temp->next;
+			free(temp->data);
+			free(temp);
+			return ;
+		}
+		prev = temp;
+		temp = temp->next;
 	}
 }
 
@@ -40,7 +66,7 @@ static	t_file	*get_file(t_file **head, int fd)
 	new_node = malloc(sizeof(t_file));
 	if (!new_node)
 	{
-		ft_free_list(head);
+		ft_free_file(head, fd);
 		return (NULL);
 	}
 	new_node->fd = fd;
@@ -106,23 +132,28 @@ char	*get_next_line(int fd)
 	char			*newline_pos;
 	int				len;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	file = get_file(&head, fd);
+	if (!file)
+		return (NULL);
 	if ((file->data && !ft_strchr(file->data, '\n')) || !file->data)
 		file->data = read_buffer(fd, file->data);
 	if (!file->data)
+	{
+		ft_free_file(&head, fd);
 		return (NULL);
+	}
 	newline_pos = ft_strchr(file->data, '\n');
 	len = (newline_pos - file->data) + 1;
 	line = ft_substr(file->data, 0, len);
 	if (!line)
 	{
-		ft_free_list(&head);
+		ft_free_file(&head, fd);
 		return (ft_free_str(&file->data));
 	}
 	file->data = handle_content(file->data);
-	if (!file->data || !file->data[0] || !head)
-		ft_free_list(&head);
+	if (!file->data || !file->data[0])
+		ft_free_file(&head, fd);
 	return (line);
 }
