@@ -1,0 +1,13 @@
+import random
+
+# Generate 500 unique random integers between -250 and 250
+random_values = random.sample(range(-250, 251), 500)
+
+# Convert the list to a space-separated string
+arg_values = ' '.join(map(str, random_values))
+
+#print({arg_values})
+
+output = f'ARG="{arg_values}"; ./push_swap $ARG | ./checker_Mac $ARG'
+
+print(output)
